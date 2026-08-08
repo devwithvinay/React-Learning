@@ -17,10 +17,10 @@ function Form(){
        
     }
     function submitHandler(e){
-        e.preventDefault();
+        e.preventDefault(); // Prevents the default form submission behavior
 
-        setNameSubmitted(name); 
-        setRoleSubmitted(role);
+        setNameSubmitted(name); // Update the submitted name state
+        setRoleSubmitted(role); // Update the submitted role state
 
     }
 
@@ -45,7 +45,7 @@ function Form(){
         </form>
 
         <div>
-          <ProfileCard name={nameSubmitted} role={roleSubmitted} />
+          <ProfileCard name={nameSubmitted} role={roleSubmitted} /> // Render the ProfileCard component with the submitted name and role
         </div>
       </div>
     );
