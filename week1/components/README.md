@@ -45,3 +45,9 @@ My React learning notes — concepts explained with examples.
 ### 07. Forms
 
 ![React Forms](./notes/07-forms.png)
+
+---
+
+### 08. useEffect
+
+![React useState](./notes/08-useEffect.png)
