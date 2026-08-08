@@ -45,7 +45,7 @@ function Form(){
         </form>
 
         <div>
-          <ProfileCard name={nameSubmitted} role={roleSubmitted} /> // Render the ProfileCard component with the submitted name and role
+          <ProfileCard name={nameSubmitted} role={roleSubmitted} /> 
         </div>
       </div>
     );
