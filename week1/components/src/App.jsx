@@ -4,6 +4,7 @@ import UseState from "./components/UseState.jsx";
 import EventHandling from "./components/EventHandling.jsx";
 import {ConditionalRendering ,OnlineStatus} from "./components/ConditionalRendering.jsx";
 import Form from "./components/Form.jsx";
+import UseEffect from "./components/UseEffect.jsx";
 
 
 function App() {
@@ -46,6 +47,8 @@ function App() {
       <br />
       <OnlineStatus/>
       <Form/>
+      <br/>
+      <UseEffect/>
     </div>
     
   );
