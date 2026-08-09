@@ -5,6 +5,7 @@ import EventHandling from "./components/EventHandling.jsx";
 import {ConditionalRendering ,OnlineStatus} from "./components/ConditionalRendering.jsx";
 import Form from "./components/Form.jsx";
 import UseEffect from "./components/UseEffect.jsx";
+import CleanUp from "./components/CleanUp.jsx";
 
 
 function App() {
@@ -49,6 +50,8 @@ function App() {
       <Form/>
       <br/>
       <UseEffect/>
+      <br/>
+      <CleanUp/>
     </div>
     
   );
