@@ -5,10 +5,7 @@ import AppRoutes from "./routes/AppRoutes";
 function App() {
   return (
     <div>
-      <BrowserRouter>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/neet/class11"}>Class 11</Link>
-            <Link to={"/neet/class12"}>Class 12</Link>
+      <BrowserRouter>           
         <AppRoutes/>       
       </BrowserRouter>
     </div>
