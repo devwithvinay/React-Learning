@@ -5,9 +5,10 @@ const CleanUp = () => {
     const [seconds , setSeconds] = useState(1)
 
     useEffect(function(){
-      const Timer = setInterval(()=>{
-            setSeconds(second=>second +1)
+      const Timer = setInterval(function(){
+            setSeconds( second => second +1 )
         },1000)
+
         return function(){
             clearInterval(Timer)
         }
