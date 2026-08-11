@@ -1,16 +1,29 @@
-# React + Vite
+# React Learning Notes ⚛️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My React learning notes — concepts explained with examples.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📚 React Notes
 
-## React Compiler
+### 01. Router
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![React Introduction](./notes/01-router.png)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 02. Props
+
+![React Props](./notes/02-Layout.png)
+
+---
+
+### 03. useState
+
+![React useState](./notes/03-useNavigate.png)
+
+---
+
+### 04. Event Handling
+
+![Event Handling](./notes/04-useRef.png)
