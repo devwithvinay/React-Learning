@@ -4,6 +4,7 @@ import AppRoutes from "./routes/AppRoutes";
 import UseRef from "./useRef/UseRef";
 import Clock from "./useRef/Clock"
 import RollingUp from "./rollingUp/RollingUp";
+import PropDrilling from "./rollingUp/PropDrilling";
 
 function App() {
   return (
@@ -13,7 +14,10 @@ function App() {
       <Clock />
       <br />
       <RollingUp />
-      <br/>
+      <br />
+      <PropDrilling />
+      <br />
+
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
