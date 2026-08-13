@@ -5,6 +5,7 @@ import UseRef from "./useRef/UseRef";
 import Clock from "./useRef/Clock"
 import RollingUp from "./rollingUp/RollingUp";
 import PropDrilling from "./rollingUp/PropDrilling";
+import ContextAPI from "./contextApi/ContextAPI";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
       <br />
       <PropDrilling />
       <br />
+      <ContextAPI/>
+      <br/>
 
       <BrowserRouter>
         <AppRoutes />
