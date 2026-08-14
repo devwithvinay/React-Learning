@@ -1,9 +1,9 @@
-import React,{createContext, useContext, useState} from 'react'
+import React, { createContext, useContext, useState } from "react";
 
-const BulbContext =  createContext();
+const BulbContext = createContext();
 
-function ContextAPI() {
-  const [bulbOn , setBulbOn] = useState(true)
+function BulbProvider({ children }) {
+    const [bulbOn, setBulbOn] = useState(true);
   return (
     <div>
       <BulbContext.Provider
@@ -12,39 +12,45 @@ function ContextAPI() {
           setBulbOn: setBulbOn,
         }}
       >
-        <Light />
+        {children}       
       </BulbContext.Provider>
     </div>
+  )
+
+}
+
+function ContextAPI(){
+  return (
+    <div>
+      <BulbProvider>
+        <Light />
+      </BulbProvider>
+    </div>
+  );
+  
+}
+
+function Light() {
+  return (
+    <div>
+      <LightBulb />
+      <LightSwitch />
+    </div>
   );
 }
 
-function Light(){
+function LightBulb() {
+  const { bulbOn } = useContext(BulbContext);
+  return <div>{bulbOn ? "Bulb On" : "Bulb Off"}</div>;
+}
+
+function LightSwitch() {
+  const { bulbOn, setBulbOn } = useContext(BulbContext);
   return (
-    <div>     
-        <LightBulb />
-        <LightSwitch />
+    <div>
+      <button onClick={() => setBulbOn(!bulbOn)}> Switch Bulb</button>
     </div>
   );
 }
 
-function LightBulb(){
-  const { bulbOn } = useContext(BulbContext)
-  return (
-    <div>
-      { bulbOn ? "Bulb On" : "Bulb Off" }
-    </div>
-  )
-}
-
-function LightSwitch(){
-  const {bulbOn , setBulbOn} = useContext(BulbContext)
-  return(
-    <div>
-      <button onClick={()=>setBulbOn(!bulbOn)}> Switch Bulb</button>
-    </div>
-  )
-}
-
- 
-export default ContextAPI
-
+export default ContextAPI;

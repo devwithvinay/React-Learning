@@ -27,3 +27,10 @@ My React learning notes — concepts explained with examples.
 ### 04. Event Handling
 
 ![Event Handling](./notes/04-useRef.png)
+
+---
+
+### 05. Context API
+
+![Event Handling](./notes/05-contextApi.png)
+
