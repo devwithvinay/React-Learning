@@ -7,10 +7,19 @@ import RollingUp from "./rollingUp/RollingUp";
 import PropDrilling from "./rollingUp/PropDrilling";
 import ContextAPI from "./contextApi/ContextAPI";
 import Counter from "./customHook/Counter"
+import useFetch from "./customHook/useFetch";
+import Hooks from "./customHook/Hooks";
+import Hook from "./customHook/prevHook/Hook";
 
 function App() {
   return (
     <div>
+      <Hook/>
+
+      <br/>
+      <Hooks/>
+      
+      <br/>
       <Counter/>
       <br/>
       <UseRef />
