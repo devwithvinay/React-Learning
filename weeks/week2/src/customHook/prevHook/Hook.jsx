@@ -2,14 +2,15 @@ import usePrev from "./usePrev";
 import {useState} from "react"
 
 function Hook(){
-    const [state , setState] = useState(0);
+    const [count , setCount] = useState(0);
 
-    const prev = usePrev(state)
+    const prev = usePrev(count) // count ki value as argument bhej rhe 
+    // prev me previous return value store ho gya 
 
 return(
     <div>
-        <button onClick={()=>setState(c=>c+1)}>Count : {state}</button>
-        <p>Previous value is {prev}</p>
+        <button onClick={()=>setCount(c=>c+1)}>Count : {count}</button>
+        <p>Previous value is {prev}</p>       
     </div>
 )
 }
