@@ -10,18 +10,21 @@ import Counter from "./customHook/Counter"
 import useFetch from "./customHook/useFetch";
 import Hooks from "./customHook/Hooks";
 import Hook from "./customHook/prevHook/Hook";
+import Debounce from "./customHook/debounceHook/Debounce";
 
 function App() {
   return (
     <div>
-      <Hook/>
+      <Debounce/>
+      <br />
+      <Hook />
 
-      <br/>
-      <Hooks/>
-      
-      <br/>
-      <Counter/>
-      <br/>
+      <br />
+      <Hooks />
+
+      <br />
+      <Counter />
+      <br />
       <UseRef />
       <br />
       <Clock />
@@ -30,8 +33,8 @@ function App() {
       <br />
       <PropDrilling />
       <br />
-      <ContextAPI/>
-      <br/>
+      <ContextAPI />
+      <br />
 
       <BrowserRouter>
         <AppRoutes />
