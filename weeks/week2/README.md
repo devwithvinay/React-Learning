@@ -36,7 +36,7 @@ My React learning notes — concepts explained with examples.
 
 ---
 
-### 06. Context API
+### 06. Custom Hooks
 
 ![Custom Hooks](./notes/06-customHook.png)
 
