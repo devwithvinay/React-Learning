@@ -26,23 +26,28 @@ function Debounce() {
 
 export default Debounce;
 
-// let currentClock;
+/*
 
-// function searchBackend(){
-//     console.log('backendis calling ');
-//     // fetch() calling 
-//  }
+// debounce function
 
-//  function debouncedSearchBackend(){
+let currentClock;
 
-//     clearTimeout(currentClock)
-//    currentClock = setTimeout(searchBackend,30); //clock start 30 sec
+function searchBackend(){
+    console.log('backendis calling ');
+    // fetch() calling 
+ }
+
+ function debouncedSearchBackend(){
+
+    clearTimeout(currentClock)
+   currentClock = setTimeout(searchBackend,30); //clock start 30 sec
     
-//  }
+ }
 
-//  debouncedSearchBackend();
-//  debouncedSearchBackend();
-//  debouncedSearchBackend();
-//  debouncedSearchBackend();
-//  debouncedSearchBackend();
+ debouncedSearchBackend();
+ debouncedSearchBackend();
+ debouncedSearchBackend();
+ debouncedSearchBackend();
+ debouncedSearchBackend();
 
+ */
