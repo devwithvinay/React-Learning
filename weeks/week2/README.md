@@ -32,5 +32,12 @@ My React learning notes — concepts explained with examples.
 
 ### 05. Context API
 
-![Event Handling](./notes/05-contextApi.png)
+![Context API](./notes/05-contextApi.png)
+
+---
+
+### 06. Context API
+
+![Custom Hooks](./notes/06-customHook.png)
+
 
