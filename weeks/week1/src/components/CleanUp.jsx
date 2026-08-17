@@ -6,7 +6,7 @@ const CleanUp = () => {
 
     useEffect(function(){
       const Timer = setInterval(function(){
-            setSeconds( second => second +1 )
+            setSeconds( second => second +1  )
         },1000)
 
         return function(){

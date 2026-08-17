@@ -105,7 +105,7 @@ function App() {
 }
 
 
-function ConditionalRendering(){
+ function ConditionalRendering(){
   const [isLogin , setIsLogin] = useState(true)
 
   function loginHandle(){
@@ -131,4 +131,176 @@ function ConditionalRendering(){
 
 export default App;
 
+### useEffect 
+useEffect is a React Hook used to perform side effects after a component renders or when specified data changes.
 
+Examples of side effects:
+
+Fetching API data
+
+Setting timers
+
+Adding event listeners
+
+Updating the document title
+
+examples :
+
+function App() {
+
+  return (
+    <div>
+    <UseEffect/>
+    </div>
+    )
+}
+
+function UseEffect (){
+  const [count , setCount] = useState(0)
+
+  useEffect(()=>{
+ const timer = setInterval(clickHandle,1000)
+
+     return function(){
+      clearInterval(timer)
+     }
+  },[count])
+
+  function clickHandle(){
+     setCount(c=>c+1)
+  }
+
+  return(
+    <div>
+      <button onClick={clickHandle}>Count:{count}</button>
+    </div>
+  )
+}
+
+export default App;
+
+
+example of useEffect 
+
+ function App() {
+  return (
+    <div>
+    <UseEffect/>
+    </div>
+    )
+}
+
+ function UseEffect(){
+  const [currentTab , setCurrentTab] = useState(1)
+  const[tabData, setTabData] = useState({})
+  const [loading , setLoading] = useState(true)
+
+  useEffect(()=>{
+    setLoading(true)
+   fetch("https://jsonplaceholder.typicode.com/todos/"+currentTab)
+    .then(async res =>{
+      const json =await res.json()
+      setTabData(json)
+      setLoading(false)
+    })
+
+  },[currentTab])
+  
+  return (
+    <div>
+      <button
+        onClick={() => setCurrentTab(1)}
+        style={{ color: currentTab == 1 ? "red" : "black" }}
+      >
+        Tab #1
+      </button>
+      <button
+        onClick={() => setCurrentTab(2)}
+        style={{ color: currentTab == 2 ? "red" : "black" }}
+      >
+        Tab #2
+      </button>
+      <button
+        onClick={() => setCurrentTab(3)}
+        style={{ color: currentTab == 3 ? "red" : "black" }}
+      >
+        Tab #3
+      </button>
+      <button
+        onClick={() => setCurrentTab(4)}
+        style={{ color: currentTab == 4 ? "red" : "black" }}
+      >
+        Tab #4
+      </button>
+
+      {loading ? "Loading..." : tabData.title}
+    </div>
+  );
+}
+export default App;
+
+
+### CleanUp 
+
+Cleanup is a function returned from useEffect that React runs to stop, remove, or clean up something created by the effect.
+
+Why do we use cleanup?
+
+To prevent things from continuing to run after they are no longer needed, which can cause unwanted behavior or memory/resource leaks.
+
+function App() {
+  return (
+    <div>
+    <CleanUp/>
+    </div>
+    )
+}
+
+function CleanUp(){
+  const [seconds , setSeconds] = useState(0)
+
+  useEffect(()=>{
+  const timer = setInterval(clickHandle , 1000)
+
+  return function (){
+    clearInterval(timer)
+  }
+  },[seconds])
+   
+  function clickHandle(){
+    setSeconds(sec=>sec+1)
+  }
+
+  return(
+    <div>
+      <button onClick={clickHandle}>Seconds:{seconds}</button>
+    </div>
+  )
+}
+
+
+export default App;
+
+Flow  Diagram
+
+Component mounts
+      ↓
+useEffect runs ONCE
+      ↓
+setInterval starts
+      ↓
+Every 1 second
+      ↓
+setSeconds(sec => sec + 1)
+      ↓
+Component re-renders
+      ↓
+Interval continues
+      ↓
+Component unmounts
+      ↓
+cleanup runs
+      ↓
+clearInterval(timer)
+      ↓
+timer stops ✅

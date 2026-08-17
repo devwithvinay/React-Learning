@@ -19,7 +19,7 @@ function UseEffect(){
 
   return (
     <div>
-      <button onClick={()=>setCurrentTab(1)}style={{color : currentTab == 1 ?"red" : "black"}}>Tab #1</button>
+      <button onClick={()=>setCurrentTab(1)} style={{color : currentTab == 1 ?"red" : "black"}}>Tab #1</button>
       <button onClick={()=>setCurrentTab(2)} style={{color : currentTab == 2 ?  "red" : "black"}}>Tab #2</button>
       <button onClick={()=>setCurrentTab(3)} style={{color : currentTab ==3 ? "red": "black"}}>Tab #3</button>
       <button onClick={()=>setCurrentTab(4)} style={{color : currentTab == 4 ? "red" : "black"}}>Tab #4</button>

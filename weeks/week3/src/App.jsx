@@ -4,34 +4,32 @@ import "./App.css";
 function App() {
   return (
     <div>
-     <ConditionalRendering/>
+    <CleanUp/>
+    </div>
+    )
+}
+
+function CleanUp(){
+  const [seconds , setSeconds] = useState(0)
+
+  useEffect(()=>{
+  const timer = setInterval(clickHandle , 1000)
+
+  return function (){
+    clearInterval(timer)
+  }
+  },[seconds])
+   
+  function clickHandle(){
+    setSeconds(sec=>sec+1)
+  }
+
+  return(
+    <div>
+      <button onClick={clickHandle}>Seconds:{seconds}</button>
     </div>
   )
 }
 
-
-function ConditionalRendering(){
-  const [isLogin , setIsLogin] = useState(true)
-
-  function loginHandle(){
-    setIsLogin(!isLogin)
-  }
-
-  return (
-    <div>
-      {isLogin ? (
-        <div>
-          <p>Welcome Back</p>
-          <button onClick={loginHandle}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          <p>Please Login</p>
-          <button onClick={loginHandle}>Login</button>
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default App;
