@@ -1,8 +1,8 @@
-## props 
+### props 
 
-=> props are the properties where we can pass from parent componenets to the child through {props}
+=> Props are the properties where we can pass from parent componenets to the child through {props}
 
- yaha par aApp parent pass kar rha hai vinay to the child Greeting ko ({name}) ke jariye or usko wo use kar rha hai 
+ yaha par App parent pass kar rha hai vinay to the child Greeting ko ({name}) ke jariye or usko wo use kar rha hai 
 
 function App(){
   return (
@@ -15,13 +15,13 @@ function App(){
 function Greeting({name}){
   return (
     <div>
-      <h1>Hiii there {name}</h1>
+      <p>Hii there {name}</p>
     </div>
   )
 }
 export default App ;
 
-output => HII there Vinay
+output => Hiii there Vinay
 
 ### UseState 
 useState => is a React Hook used to create and manage data (state) inside a component. When the state changes, React re-renders the component with the updated value.
@@ -36,7 +36,7 @@ function App(){
     <button onClick={()=>setCount(c =>c+1)}>Increase</button>
     </div>
   )
-}
+}3
 
 export default App
 
@@ -62,7 +62,7 @@ Events are => onClick={} , onChange={} , type="" , onSubmit={}
 
 export default App
 
-## example 2 
+-- example 2 
 
 function App() {
   return (
@@ -144,9 +144,9 @@ Adding event listeners
 
 Updating the document title
 
-examples :
+--examples 1:
 
-function App() {
+ function App() {
 
   return (
     <div>
@@ -180,7 +180,7 @@ function UseEffect (){
 export default App;
 
 
-example of useEffect 
+example 2:  useEffect 
 
  function App() {
   return (
@@ -198,7 +198,7 @@ example of useEffect
   useEffect(()=>{
     setLoading(true)
    fetch("https://jsonplaceholder.typicode.com/todos/"+currentTab)
-    .then(async res =>{
+    .then(async res => {
       const json =await res.json()
       setTabData(json)
       setLoading(false)
