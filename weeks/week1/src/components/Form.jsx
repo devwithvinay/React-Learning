@@ -52,3 +52,75 @@ function Form(){
 }
 
 export default Form;    
+
+/*
+
+function App() {
+  return (
+    <div>
+      <Form />
+    </div>
+  );
+}
+
+function Form(){
+  const [form , setForm] = useState({name:"" , email:"" , password:""})
+
+  function submitHandler(event){
+    event.preventDefault()
+    console.log(form)
+  }
+  function changeHandler(event){
+  const {name , value} = event.target
+
+  setForm(prev=>({
+    ...prev , [name]:value
+  }))
+
+  }
+
+  return (
+    <div>
+      <form onSubmit={submitHandler}>
+
+        <input
+          type="text"
+          name="name"
+          value={form.name}
+          onChange={changeHandler}
+          placeholder="Enter your Name"
+           required
+        />
+
+        <br />
+
+        <input
+          type="text"
+          name="email"
+          value={form.email}
+          placeholder="Enter your email"
+          onChange={changeHandler}
+          required
+        />
+
+        <br />
+
+        <input
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={changeHandler}
+          placeholder="Enter your Password"
+          required
+        
+        />
+
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+*/

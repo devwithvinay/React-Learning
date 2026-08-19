@@ -1,62 +1,77 @@
-import { useState, useEffect, useRef, useContext, u } from "react";
+import { useState, useEffect, useRef, useContext,  } from "react";
+import {BrowserRouter , Outlet, Route , Routes  , Link} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
     <div>
-      <UseEffect />
+      <AppRoute/>
     </div>
   );
 }
 
-function UseEffect() {
-  const [currentTab, setCurrentTab] = useState(1);
-  const [tabData  , setTabData] = useState({})
-  const [loading , setLoading] = useState(true)
-
-  useEffect(()=>{
-    setLoading(true)
-    fetch("https://jsonplaceholder.typicode.com/todos/"+currentTab)
-    .then(async res=>{
-      const json =await res.json();
-      setTabData(json)
-      setLoading(false)
-
-    })
-      
-    
-
-  },[currentTab])
-
+function AppRoute() {
   return (
     <div>
-      <button
-        onClick={() => setCurrentTab(1)}
-        style={{ color: currentTab == 1 ? "red" : "black" }}
-      >
-        Tab #1
-      </button>
-      <button
-        onClick={() => setCurrentTab(2)}
-        style={{ color: currentTab == 2 ? "red" : "black" }}
-      >
-        Tab #2
-      </button>
-      <button
-        onClick={() => setCurrentTab(3)}
-        style={{ color: currentTab == 3 ? "red" : "black" }}
-      >
-        Tab #3
-      </button>
-      <button
-        onClick={() => setCurrentTab(4)}
-        style={{ color: currentTab == 4 ? "red" : "black" }}
-      >
-        Tab #4
-      </button>
-      <p>{loading ? "Loading..." :tabData.title}</p>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout/>}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/jee/class11" element={<Class11Jee />} />
+            <Route path="/jee/class12" element={<Class12Jee />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
+
+function Layout(){
+  return (
+    <div style={{height:"100vh"}}>
+      <Link to={"/"}>Home</Link> |
+      <Link to={"/jee/class11"}>Class 11</Link> |
+      <Link to={"/jee/class12"}>Class 12</Link>
+      <div style={{height:"90vh"}}>
+        <Outlet/>
+      </div>
+
+    </div>
+  )
+}
+
+function Landing(){
+  return(
+    <div>
+      Welcome to Physics Wallah
+    </div>
+  )
+}
+
+function Class11Jee (){
+  return(
+    <div>
+      Class 11 jee program 
+    </div>
+  )
+}
+
+function Class12Jee(){
+  const navigate = useNavigate()
+
+  function redirectHandler(){
+    navigate("/")
+  }
+  
+  return(
+    <div>
+      Class 12 jee program
+    <button onClick={redirectHandler}>Go to Home</button>  
+    </div>
+  )
+}  
+
+
 
 export default App;

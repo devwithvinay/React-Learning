@@ -304,3 +304,161 @@ cleanup runs
 clearInterval(timer)
       ↓
 timer stops ✅
+
+### Forms in React
+ => Forms are used to collect user input and handle the input data by States
+  examples
+
+  function App() {
+function App() {
+  return (
+    <div>
+      <Form />
+    </div>
+  );
+}
+
+function Form(){
+  const [form , setForm] = useState({name:"" , email:"" , password:""})
+
+  function submitHandler(event){
+    event.preventDefault()
+    console.log(form)
+  }
+  function changeHandler(event){
+  const {name , value} = event.target
+
+  setForm(prev=>({
+    ...prev , [name]:value
+  }))
+
+  }
+
+  return (
+    <div>
+      <form onSubmit={submitHandler}>
+
+        <input
+          type="text"
+          name="name"
+          value={form.name}
+          onChange={changeHandler}
+          placeholder="Enter your Name"
+           required
+        />
+
+        <br />
+
+        <input
+          type="text"
+          name="email"
+          value={form.email}
+          placeholder="Enter your email"
+          onChange={changeHandler}
+          required
+        />
+
+        <br />
+
+        <input
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={changeHandler}
+          placeholder="Enter your Password"
+          required
+        
+        />
+
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+### Routing and useNavigate
+
+Routing used to showing different UI/pages acoording to link or url
+
+=> Layout contain Share Ui/page layout => 1navbar , 2outlet means rest of pages later navbar 
+
+import { useState, useEffect, useRef, useContext,  } from "react";
+import {BrowserRouter , Outlet, Route , Routes  , Link} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import "./App.css";
+
+function App() {
+  return (
+    <div>
+      <AppRoute/>
+    </div>
+  );
+}
+
+function AppRoute() {
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout/>}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/jee/class11" element={<Class11Jee />} />
+            <Route path="/jee/class12" element={<Class12Jee />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+function Layout(){
+  return (
+    <div style={{height:"100vh"}}>
+      <Link to={"/"}>Home</Link>
+      <Link to={"/jee/class11"}>Class 11</Link>
+      <Link to={"/jee/class12"}>Class 12</Link>
+      <div style={{height:"90vh"}}>
+        <Outlet/>
+      </div>
+
+    </div>
+  )
+}
+
+function Landing(){
+  return(
+    <div>
+      Welcome to Physics Wallah
+    </div>
+  )
+}
+
+function Class11Jee (){
+  return(
+    <div>
+      Class 11 jee program 
+    </div>
+  )
+}
+
+function Class12Jee(){
+  const navigate = useNavigate()
+
+  function redirectHandler(){
+    navigate("/")
+  }
+  
+  return(
+    <div>
+      Class 12 jee program
+    <button onClick={redirectHandler}>Go to Home</button>  
+    </div>
+  )
+}
+
+
+
+export default App;
+
