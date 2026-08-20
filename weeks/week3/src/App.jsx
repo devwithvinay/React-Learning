@@ -6,34 +6,34 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <UsePrev />
-    </div>
-  );
+      <UseDebounce/>
+    </div>)
 }
 
-function usePrev(value){
-  const ref = useRef();
+function useDebounce(data){
+  const currentSearch  = useRef()
 
-  useEffect(()=>{
-    ref.current = value
-  },[value])
-
-  return ref.current
+  const Search = ()=> {
+    clearTimeout(currentSearch.current)
+    currentSearch.current = setTimeout(data , 200)
+  }
+  return Search
 }
 
-function UsePrev(){
-  const [count , setCount] = useState(0)
-  const prev = usePrev(count)
+function UseDebounce(){
+
+  const debounce = useDebounce(sendDataToBackend)
+
+  function sendDataToBackend(){
+    fetch("https://localhost3000")
+  }
+
   return(
-    
     <div>
-      <p>{count}</p>
-      <button onClick={()=>setCount(c=>c+1)}>Click Me</button>
-      <p>Previous value is {prev}</p>
+      <input type="text" onChange={debounce}/>
     </div>
   )
 }
-
 
 
 export default App;
