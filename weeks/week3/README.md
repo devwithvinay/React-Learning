@@ -458,7 +458,40 @@ function Class12Jee(){
   )
 }
 
-
-
 export default App;
 
+### useRef 
+
+useRef provides a way to create a reference to a value or DOM Element 
+
+example :
+
+function Clock(){
+  const[seconds, setseconds] = useState(0)
+
+  const timer = useRef();
+
+  function increaseSeconds(){
+    setseconds(sec=>sec+1)
+  }
+
+  function clockStart(){
+   const clockValue =  setInterval(increaseSeconds , 1000)
+   timer.current = clockValue
+  }
+
+  function stopClock(){
+    clearInterval(timer.current)
+  }
+
+  return (
+    <div>
+      <p>seconds:{seconds}</p>
+      <button onClick={clockStart}>Start</button>
+
+      <button onClick={stopClock}>Stop</button>
+    </div>
+  );
+}
+
+useRef doesn't render anything but used to store that value in useRef form .
