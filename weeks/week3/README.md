@@ -495,3 +495,267 @@ function Clock(){
 }
 
 useRef doesn't render anything but used to store that value in useRef form .
+
+
+### Prop Drilling
+
+example: 
+
+import React,{useState} from 'react'
+
+function PropDrilling() {
+    const [bulbOn , setBulbOn] = useState(true)
+  return (
+    <div>
+      <Light bulbOn={bulbOn} setBulbOn={setBulbOn}/>
+    </div>
+  )
+}
+
+function Light({bulbOn , setBulbOn}){
+    return (
+      <div>
+        <LightBulb bulbOn={bulbOn} />
+        <LightSwitch bulbOn={bulbOn} setBulbOn={setBulbOn} />
+      </div>
+    );
+}
+
+function LightBulb({bulbOn}){
+    return(
+        <div>
+         {bulbOn? "Bulb On" : "Bulb  Off"}
+        </div>
+    )
+}
+
+function LightSwitch({ bulbOn , setBulbOn}){
+    return (
+        <div>
+           <button onClick={()=>setBulbOn(!bulbOn)}>Switch</button>
+        </div>
+    )
+}
+
+export default PropDrilling;
+
+// This is bad when pass from parent to child to grandchild , when you have alot props passes all have to pass like that than it cause complexity , hard to maintenance .
+
+so to over come this we are using context api 
+
+
+### Context API 
+
+example :
+
+function App() {
+  return (
+    <div>
+      <ContextApi />
+    </div>
+  );
+}
+const BulbContext = createContext(); 
+//create context always outside the function component
+
+
+function ContextApi(){
+
+const [bulbOn , setBulbOn] = useState(true)
+  return (
+    <div>
+      <BulbContext.Provider
+       value={
+        {bulbOn:bulbOn, setBulbOn:setBulbOn}
+        }>
+        <Light />
+      </BulbContext.Provider>
+    </div>
+  );
+}
+
+function Light(){
+  return(
+    <div>
+      <LightBulb/>
+      <LightSwitch/>
+    </div>
+  )
+}
+
+function LightBulb(){
+  const {bulbOn} = useContext(BulbContext)
+  return(
+    <div>
+     {bulbOn ? "BulbOn" : "BulbOff"}
+    </div>
+  )
+}
+
+function LightSwitch(){
+  const {bulbOn ,setBulbOn}= useContext(BulbContext)
+  return (
+    <div>
+      <button onClick={()=>setBulbOn(!bulbOn)}>Switch</button>
+    </div>
+  )
+}
+
+### Custom Hooks 
+
+## useCounter
+
+function App() {
+  return (
+    <div>
+      <Counter/>
+    </div>
+  );
+}
+
+function useCounter(){
+  const [count , setCount] = useState(0);
+
+  function increaseCount(){
+    setCount(c=>c+1)
+  }
+  return { count :count , increaseCount : increaseCount}
+}
+
+function Counter(){
+  const {count , increaseCount} = useCounter(0)
+  return(
+    <div>
+      <button onClick={increaseCount}>Counter:{count}</button>
+    </div>
+  )
+}
+
+export default App;
+
+# useFetch
+
+function App() {
+  return (
+    <div>
+      <UseFetch />
+    </div>
+  );
+}
+
+function useFetch(url) {
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  async function getData() {
+    setLoading(true);
+    const response = await fetch(url);
+    const json = await response.json();
+    setData(json);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    getData();
+  }, [url]);
+
+  /*
+
+  useEffect(() => {
+    const timer = setInterval(getData, 1000 * 10);
+
+    return function () {
+      clearInterval(timer);
+    };
+  }, []);
+
+  // this useEffect for updating after 10 sec  if any changes in backend it re render the UI 
+
+  */
+
+  return { data, loading };
+}
+
+function UseFetch() {
+  const [currentTab, setCurrentTab] = useState(1);
+
+  const { data, loading } = useFetch(
+    "https://jsonplaceholder.typicode.com/posts/" + currentTab,
+  );
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <button
+        onClick={() => setCurrentTab(1)}
+        style={{ color: currentTab == 1 ? "black" : "red" }}
+      >
+        Tab #1
+      </button>
+      <button
+        onClick={() => setCurrentTab(2)}
+        style={{ color: currentTab == 2 ? "black" : "red" }}
+      >
+        Tab #2
+      </button>
+      <button
+        onClick={() => setCurrentTab(3)}
+        style={{ color: currentTab == 3 ? "black" : "red" }}
+      >
+        Tab #3
+      </button>
+      <button
+        onClick={() => setCurrentTab(4)}
+        style={{ color: currentTab == 4 ? "black" : "red" }}
+      >
+        Tab #4
+      </button>
+
+      <p>{JSON.stringify(data)}</p>
+    </div>
+  );
+}
+
+export default App;
+
+
+### usePrev 
+
+example :
+
+function App() {
+  return (
+    <div>
+      <UsePrev />
+    </div>
+  );
+}
+
+function usePrev(value){
+  const ref = useRef();
+
+  useEffect(()=>{
+    ref.current = value
+  },[value])
+
+  return ref.current
+}
+
+function UsePrev(){
+  const [count , setCount] = useState(0)
+  const prev = usePrev(count)
+  return(
+    
+    <div>
+      <p>{count}</p>
+      <button onClick={()=>setCount(c=>c+1)}>Click Me</button>
+      <p>Previous value is {prev}</p>
+    </div>
+  )
+}
+
+export default App;
+
