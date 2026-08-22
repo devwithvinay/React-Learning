@@ -760,3 +760,31 @@ function UsePrev(){
 export default App;
 
 
+### Recoil
+Recoil helps to stop unneccesary re-render it makes code more efficient 
+ -- Steps to use Recoil --
+ 1. npm i recoil 
+ 2. import{ RecoilRoot} from 'recoil' 
+ 3. Wrapping the Component with RecoilRoot
+ 4. Create an atom 
+ eg. const Counter = atom ({ //atom is an function we call this function with two things
+       default : 0,  // default value means atom value
+       key : "counter" // key should be unique so it can be identify , we can't use same name kotherwise its gives an error
+   })
+
+ 5. Atom always define outside of the tree or other folder like store
+
+ Store folder where all state management things were stored
+  store -> atoms then file -> counter.js
+
+ 6. now import it in component 
+  remove all props drilling from function remove states
+  so how to use count and setCount to increase or decrease ?
+ 7. using useRecoilValue() =>
+
+  const count = useRecoilValue(counterAtom)
+  The currentCounter Component is subscribe to the value of this Atom.
+
+Now in Increase and decrease need setCount to access value and update the value and re -render
+
+so const setCount = useSetRecoilState(counterAtom)

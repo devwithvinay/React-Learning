@@ -24,7 +24,7 @@ function Counter(){
 function CurrentCounter() {
 
  const count = useRecoilValue(counterAtom)
- 
+
   return <div>{count}</div>;
 }
 
@@ -52,4 +52,4 @@ function Decrease() {
 
 
 
-export default Recoil 
+export default Recoil ;

@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import "./App.css";
 import Context from "./recoil/Context";
 import {RecoilRoot} from "recoil";
+import Recoil from "./recoil/Recoil";
 
 function App() {
   return (
     <div>
       <RecoilRoot>
-        <Context />
+        <Recoil />
       </RecoilRoot>
     </div>
   );
